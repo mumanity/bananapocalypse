@@ -121,27 +121,48 @@ function update() {
     //  Reset the players velocity (movement)
     player.body.velocity.x = 0;
 
-    if (cursors.left.isDown)
-    {
-        //  Move to the left
-        player.body.velocity.x = -150;
 
+    if (cursors.left.isDown && cursors.up.isDown)
+    {
+//  Jump to the left
+        player.body.velocity.x = -150;
+        player.frame = 0
+    }
+    else if (cursors.right.isDown && cursors.up.isDown)
+    {
+//  Jump to the right
+        player.body.velocity.x = 150;
+        player.frame = 3
+    }
+    else if (cursors.left.isDown)
+    {
+//  Move to the left
+        player.body.velocity.x = -150;
         player.animations.play('left');
     }
     else if (cursors.right.isDown)
     {
-        //  Move to the right
+//  Move to the right
         player.body.velocity.x = 150;
-
         player.animations.play('right');
     }
+
+
+
     else
     {
-        //  Stand still
+//  Stand still
         player.animations.stop();
-// SET DIRECTION OF IDLE
-            // if player.frame =
-        player.frame = 2;
+// set direction of idle
+            if (player.frame === 3 || 2){
+                player.frame = 2
+            }
+            else if (player.frame === 0 || 1) {
+                player.frame = 1
+            }
+            else {
+                player.frame = 2
+            }
     }
 
     //  Allow the player to jump if they are touching the ground.
