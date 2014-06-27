@@ -48,7 +48,7 @@
             for (var i = 0; i < 1; i++) {
                 var banana = bananas.create(randLoc, 0, 'banana');
                 banana.body.velocity.x = randVel;
-                banana.body.gravity.y = 600;
+                banana.body.gravity.y = 500;
                 banana.body.bounce.y = 0.075 + Math.random() * 0.2;
         }
 
@@ -96,15 +96,15 @@
         {
             player.animations.stop();
     // NOT WORKING set direction of idle
-                if (player.frame != 2 || 3) {
+                if (player.frame === 2) {
                     player.frame = 2
                 }
-                else {
+                if (player.frame === 1) {
                     player.frame = 1
                 }
         };
 
-    //  jump
+//  jump
         if (cursors.up.isDown && player.body.touching.down) {
             player.body.velocity.y = -350;
         }
