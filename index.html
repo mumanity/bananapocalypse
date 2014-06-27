@@ -36,7 +36,7 @@ function create() {
     platforms = game.add.group();
 //  enable physics for platforms
     platforms.enableBody = true;
-    var ground = platforms.create(0, game.world.height - 39, 'ground');
+    var ground = platforms.create(0, game.world.height - 56, 'ground');
     ground.scale.setTo(2, 2);
     ground.body.immovable = true;
 //  dino
@@ -44,7 +44,8 @@ function create() {
     game.physics.arcade.enable(player);
     player.body.bounce.y = 0.2;
     player.body.gravity.y = 700;
-    // player.body.setSize(32,32);
+// adding setSize with offset to invidible body
+    player.body.setSize(20, 35, 20, 10);
     player.body.collideWorldBounds = true;
     player.animations.add('left', [0, 1], 10, true);
     player.animations.add('right', [2, 3], 10, true);
@@ -52,10 +53,13 @@ function create() {
 //  bananas
     bananas = game.add.group();
     bananas.enableBody = true;
+    // bananas.body.setSize(16,16);
+    player.body.setSize(32, 45);
+    player.body.collideWorldBounds = true;
 
     function dropMeteor() {
         var randLoc = Math.random() * (800 - 0) + 0;
-        var randVel = Math.random() * (200 - -200) - 200;
+        var randVel = Math.random() * (300 - -100) - 100;
         for (var i = 0; i < 1; i++) {
             var banana = bananas.create(randLoc, 0, 'banana');
             banana.body.velocity.x = randVel;
