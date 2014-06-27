@@ -26,8 +26,9 @@ function preload() {
 var player;
 var cursors;
 var bananas;
-var score = 0;
-var scoreText;
+// var score = 0;
+// var scoreText;
+var isGameOver = false;
 
 function create() {
 // Arcade Physics system
@@ -43,7 +44,7 @@ function create() {
     player = game.add.sprite(32, game.world.height - 150, 'dino');
     game.physics.arcade.enable(player);
     player.body.bounce.y = 0.2;
-    player.body.gravity.y = 700;
+    player.body.gravity.y = 600;
 // adding setSize with offset to invidible body
     player.body.setSize(20, 25, 20, 15);
     player.body.collideWorldBounds = true;
@@ -53,7 +54,6 @@ function create() {
 //  bananas
     bananas = game.add.group();
     bananas.enableBody = true;
-    // bananas.body.setSize(16,16);
     player.body.setSize(32, 45);
     player.body.collideWorldBounds = true;
 
@@ -69,20 +69,20 @@ function create() {
 
         }
     timer = game.time.events.loop(1500, dropMeteor, 'banana');
-//  The score
+//  score
     // scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
 
 //  controls
     cursors = game.input.keyboard.createCursorKeys();
+    restartKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
 
 }
 
 function update() {
 
-//  Collision for dino and bananas
+//  Collision
     game.physics.arcade.collide(player, platforms);
     game.physics.arcade.collide(bananas, platforms);
-    game.physics.arcade.collide(player, bananas, restartGame, null, this);
 
 //  Reset velocity (movement)
     player.body.velocity.x = 0;
@@ -124,14 +124,19 @@ function update() {
         player.body.velocity.y = -350;
     }
 
+    if (game.physics.arcade.collide(player, bananas)) {
+        gameOver();
+    }
+
+    if (isGameOver && cursors.down.isDown) {
+        game.state.start(game.state.current);
+    }
 };
 
-
-game.state.add('main', main_state);
-game.state.start('main');
-
-    function restartGame() {
-        game.start();
+    function gameOver() {
+        game.add.text(300, 283, 'GAME OVER', { fontSize: '32px', fill: '#000' });
+        game.add.text(200, 320, 'Press the down arrow to restart.', { fontSize: '2px', fill: '#000' });
+        isGameOver = true;
     }
 
 
