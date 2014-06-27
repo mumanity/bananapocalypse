@@ -20,7 +20,7 @@ function preload() {
     game.load.image('sky', 'assets/sky1.png');
     game.load.image('ground', 'assets/ground.png');
     game.load.image('banana', 'assets/banana_small.png');
-    game.load.spritesheet('dino', 'assets/dino.png', 67, 67);
+    game.load.spritesheet('dino', 'assets/dino.png', 68, 67);
 }
 
 var player;
@@ -45,7 +45,7 @@ function create() {
     player.body.bounce.y = 0.2;
     player.body.gravity.y = 700;
 // adding setSize with offset to invidible body
-    player.body.setSize(20, 35, 20, 10);
+    player.body.setSize(20, 25, 20, 15);
     player.body.collideWorldBounds = true;
     player.animations.add('left', [0, 1], 10, true);
     player.animations.add('right', [2, 3], 10, true);
