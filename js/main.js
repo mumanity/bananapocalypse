@@ -11,6 +11,7 @@
     var player;
     var cursors;
     var bananas;
+    var keyboard = Phaser.Keyboard;
     // var score = 0;
     // var scoreText;
     var isGameOver = false;
@@ -28,7 +29,7 @@
     //  dino
         player = game.add.sprite(32, game.world.height - 150, 'dino');
         game.physics.arcade.enable(player);
-        player.body.bounce.y = 0.2;
+        player.body.bounce.y = 0.4;
         player.body.gravity.y = 600;
     // adding setSize with offset to invidible body
         player.body.setSize(20, 25, 20, 15);
@@ -59,7 +60,9 @@
 
     //  controls
         cursors = game.input.keyboard.createCursorKeys();
-        restartKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
+        keyboard = game.input.keyboard;
+        // jump = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        // restartKey = game.input.keyboard.addKey(Phaser.Keyboard.esc);
 
     }
 
@@ -72,42 +75,38 @@
     //  Reset velocity (movement)
         player.body.velocity.x = 0;
 
-        if (cursors.left.isDown && cursors.up.isDown)
-        {
+        if (cursors.left.isDown && cursors.up.isDown) {
             player.body.velocity.x = -150;
             player.frame = 0
         }
-        else if (cursors.right.isDown && cursors.up.isDown)
-        {
+        else if (cursors.right.isDown && cursors.up.isDown) {
             player.body.velocity.x = 150;
             player.frame = 3
         }
-        else if (cursors.left.isDown)
-        {
+        else if (cursors.left.isDown) {
             player.body.velocity.x = -150;
             player.animations.play('left');
         }
-        else if (cursors.right.isDown)
-        {
+        else if (cursors.right.isDown) {
             player.body.velocity.x = 150;
             player.animations.play('right');
+
         }
-        else
-        {
-            player.animations.stop();
-    // NOT WORKING set direction of idle
-                if (player.frame === 2) {
-                    player.frame = 2
-                }
-                if (player.frame === 1) {
-                    player.frame = 1
-                }
+        else {
+            if (player.animations.stop() && player.frame === 2 || 3) {
+                player.frame = 2;
+            }
+            else {
+                player.frame = 1;
+            }
         };
 
-//  jump
         if (cursors.up.isDown && player.body.touching.down) {
             player.body.velocity.y = -350;
         }
+        // if (keyboard.jump.isDown && player.body.touching.down) {
+        //     player.body.velocity.y = -350;
+        // }
 
         if (game.physics.arcade.collide(player, bananas)) {
             gameOver();
@@ -117,6 +116,7 @@
             game.state.start(game.state.current);
         }
     };
+
 
         function gameOver() {
             game.add.text(300, 283, 'GAME OVER', { fontSize: '32px', fill: '#000' });
