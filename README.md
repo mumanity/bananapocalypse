@@ -9,10 +9,6 @@ Bananapocalypse! is built on the Phaser framework. Visit https://github.com/phot
 
 Bananapocalypse! is mumanity's  first attempt at building an HTML5 game. Future updates may allow for more rhyme and reason to the currently non-existent storyline, but in the meantime, all you need to know is that bananas are gross and were likely responsible for the downfall of dinosaurs. Avoid them.
 
-## Installation
+## How to Play
 
-Words...
-
-## Getting Started
-
-After running 'python -m SimpleHTTPServer' you can access Bananapocalypse! on your local webserver at `http://127.0.0.1:8000`.
+This coming soon to a portfolio site near your internets!
