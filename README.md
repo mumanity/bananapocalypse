@@ -1,7 +1,7 @@
 <!-- http://localhost:8000/
  python -m SimpleHTTPServer -->
 
-![Phaser 2.0](http://www.phaser.io/images/phaser2-github.png)
+![Bananapocalypse](logo.jpg)
 
 # Bananapocalypse!
 
