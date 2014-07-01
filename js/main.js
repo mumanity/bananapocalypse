@@ -17,11 +17,9 @@
     var isGameOver = false;
 
     function create() {
-    // Arcade Physics system
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.add.sprite(0, 0, 'sky');
         platforms = game.add.group();
-    //  enable physics for platforms
         platforms.enableBody = true;
         var ground = platforms.create(0, game.world.height - 56, 'ground');
         ground.scale.setTo(2, 2);
@@ -31,7 +29,6 @@
         game.physics.arcade.enable(player);
         player.body.bounce.y = 0.4;
         player.body.gravity.y = 600;
-    // adding setSize with offset to invidible body
         player.body.setSize(20, 25, 20, 15);
         player.body.collideWorldBounds = true;
         player.animations.add('left', [0, 1], 10, true);
@@ -55,10 +52,10 @@
 
             }
         timer = game.time.events.loop(1500, dropMeteor, 'banana');
-    //  score
+//  score
         // scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
 
-    //  controls
+//  controls
         cursors = game.input.keyboard.createCursorKeys();
         keyboard = game.input.keyboard;
         // jump = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -67,12 +64,9 @@
     }
 
     function update() {
-
-    //  Collision
         game.physics.arcade.collide(player, platforms);
         game.physics.arcade.collide(bananas, platforms);
 
-    //  Reset velocity (movement)
         player.body.velocity.x = 0;
 
         if (cursors.left.isDown && cursors.up.isDown) {
