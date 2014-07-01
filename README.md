@@ -11,4 +11,4 @@ Bananapocalypse! is mumanity's  first attempt at building an HTML5 game. Future 
 
 ## How to Play
 
-This coming soon to a portfolio site near your internets!
+Coming soon to a portfolio site near your internets!
