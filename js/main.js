@@ -12,8 +12,6 @@
     var cursors;
     var bananas;
     var keyboard = Phaser.Keyboard;
-    // var score = 0;
-    // var scoreText;
     var isGameOver = false;
 
     function create() {
@@ -52,15 +50,10 @@
 
             }
         timer = game.time.events.loop(1500, dropMeteor, 'banana');
-//  score
-        // scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
 
 //  controls
         cursors = game.input.keyboard.createCursorKeys();
         keyboard = game.input.keyboard;
-        // jump = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        // restartKey = game.input.keyboard.addKey(Phaser.Keyboard.esc);
-
     }
 
     function update() {
@@ -98,9 +91,6 @@
         if (cursors.up.isDown && player.body.touching.down) {
             player.body.velocity.y = -350;
         }
-        // if (keyboard.jump.isDown && player.body.touching.down) {
-        //     player.body.velocity.y = -350;
-        // }
 
         if (game.physics.arcade.collide(player, bananas)) {
             gameOver();
