@@ -12,9 +12,10 @@ body {
 
 #subtitle {
   text-align: center;
-  font-size: 1em;
+  font-size: 1.3em;
   font-weight: bold;
   color: white;
+  margin-top: .3em;
   margin-bottom: .3em;
 }
 
