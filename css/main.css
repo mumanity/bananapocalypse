@@ -1,10 +1,10 @@
 body {
-  background-color: #151515;
+  background-color: #3a3431;
+  font-family: 'Raleway', sans-serif;
 }
 
 #title {
   text-align: center;
-  font-family: 'Indie Flower', cursive;
   font-size: 3.5em;
   font-weight: bold;
   color: white;
@@ -12,7 +12,6 @@ body {
 
 #subtitle {
   text-align: center;
-  font-family: 'Indie Flower', cursive;
   font-size: 1.5em;
   font-weight: bold;
   color: white;
